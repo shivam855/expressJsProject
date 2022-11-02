@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>links}}
+    <style>
+        body{
+            text-align: center;
+        }
+        p {
+            size: 2rem;
+            color: rgb(235, 63, 11);
+            background-color:antiquewhite;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            padding-inline-start: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    {{>index}}
+    <h1>This Is Our Temperature Page</h1>
+    <form>
+        Enter city : <input type="text" id="city">
+    </form>
+    <p id="temp"></p>
+    <button class="btn" id="submit">submit</button>
+    <script>
+        const city = document.getElementById("city");
+        const submit = document.getElementById("submit");
+        const temp = document.getElementById("temp");
+        
+        const getTemp = async() => {
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=0aa7e5fcbc4d0336a346a6b29390b944`;
+            const response = await fetch(url);
+            let data = await response.json();
+            let tempData = [data];
+            console.log(tempData);
+
+            temp.innerText = "city name is " + tempData[0].name + " and the temp is " + tempData[0].main.temp + " Kelvin ";
+        };      
+
+        submit.addEventListener("click",getTemp);
+    </script>
+
+    {{>footer}}
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>links}}
+    
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    {{>index}}
+    <h1>This Is Our About Page</h1>
+
+    <button class="btn btn-success" id="thanks">Thanks To Visit!!</button>
+    
+    <script>
+        var button = document.getElementById("thanks");
+
+        button.addEventListener("click", function () {
+            document.location.href ="/thanks" ;
+        });
+    </script>
+    {{>footer}}
+</body>
+
+</html>
